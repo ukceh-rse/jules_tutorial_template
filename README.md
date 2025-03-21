@@ -13,7 +13,7 @@
 Clone the repository using the following command,
 
 ```sh
-git clone --recurse-submodules https://github.com/ukceh_rse/jules_tutorial_template
+git clone --recurse-submodules https://github.com/ukceh-rse/jules_tutorial_template
 ```
 
 This also clones the [`portable_jules` repository](https://github.com/jmarshrossney/portable_jules) as a [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
