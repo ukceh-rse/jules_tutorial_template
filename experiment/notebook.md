@@ -14,15 +14,17 @@ jupyter:
 
 # Experiment Title
 
-<!-- #raw -->
-! devbox run -c ../portable-jules/devbox.json jules -d jules/ jules/config
-<!-- #endraw -->
-
 ```python
 from pathlib import Path
 
+import pandas as pd
 import matplotlib.pyplot as plt
 import xarray as xr
+```
+
+```python
+# This should say /path/to/jules_tutorial_template/experiment !
+! pwd
 ```
 
 ```python
@@ -37,6 +39,24 @@ outputs_dir = jules_dir / "outputs"
 assert jules_dir.exists()
 ```
 
+## Run JULES
+
+```python
+! devbox run -c ../portable-jules/devbox.json jules -d {jules_dir} {namelists_dir}
+```
+
+```python
+! cat -n {jules_dir / "stdout.log"} | (head; tail)
+```
+
+```python
+! cat {jules_dir / "stderr.log"}
+```
+
+```python
+! ls {outputs_dir}
+```
+
 ## Inspect the output data
 
 ```python
@@ -45,6 +65,34 @@ dataset = xr.open_dataset(outputs_dir / "loobos.test.nc")
 dataset
 ```
 
+### Inspect tstar
+
 ```python
-print("hi")
+tstar = dataset.tstar.squeeze()
+
+tstar
+```
+
+```python
+tstar.plot.line(x = "time")
+```
+
+```python
+tstar_df = tstar.to_dataframe().drop(["latitude", "longitude"], axis=1)
+tile_ids = tstar_df.index.get_level_values("tile").unique()
+
+tstar_rolling = pd.concat(
+    {f"tile {tile_id}": tstar_df.xs(tile_id, level = "tile").tstar.rolling(window="24h").mean() for tile_id in tile_ids},
+    axis=1,
+)
+
+tstar_rolling
+```
+
+```python
+tstar_rolling.plot(ylabel="K", label="Daily average temp")
+```
+
+```python
+
 ```

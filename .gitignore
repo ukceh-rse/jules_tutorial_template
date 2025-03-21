@@ -1,6 +1,8 @@
-# Plots
+# Specific file extensions to ignore - images, data etc.
 *.jpeg
 *.png
+*.nc
+*.log
 
 # Python virtual environment
 .venv/
@@ -8,3 +10,6 @@
 # Jupyter stuff
 *.ipynb
 *.ipynb_checkpoints/
+
+# Outputs of JULES experiments
+**/outputs/

@@ -20,13 +20,7 @@ This also clones the [`portable_jules` repository](https://github.com/jmarshross
 
 ### JULES setup
 
-Enter the `portabe_jules` directory,
-
-```sh
-cd jules_tutorial_template/portable_jules
-```
-
-Follow the 'Quickstart' instructions at [github.com/jmarshrossney/portable_jules](https://github.com/jmarshrossney/portable_jules/blob/main/README.md) to download and build JULES.
+Follow the 'Quickstart' instructions at [github.com/jmarshrossney/portable_jules](https://github.com/jmarshrossney/portable_jules/blob/main/README.md) (starting from `cd portable-jules`) to download and build JULES.
 
 Once you have successfully installed JULES and run the 'Loobos' example successfully, return to the repository root directory with `cd ..`.
 
@@ -80,7 +74,7 @@ jupytext --to ipynb experiment/notebook.md
 To launch Jupyter Lab in the `experiment/` directory, run
 
 ```sh
-jupyter lab experiment
+jupyter lab experiment/
 ```
 
 
