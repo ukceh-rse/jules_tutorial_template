@@ -20,7 +20,7 @@ This also clones the [`portable-jules` repository](https://github.com/jmarshross
 
 ### JULES setup
 
-Follow the 'Quickstart' instructions at [github.com/jmarshrossney/portable-jules](https://github.com/jmarshrossney/portable-jules/blob/main/README.md) (starting from `cd portable-jules`) to download and build JULES.
+Follow the 'Quickstart' instructions at [github.com/jmarshrossney/portable-jules](https://github.com/jmarshrossney/portable-jules/blob/main/README.md) (ignoring the step that clones the repository) to download and build JULES.
 
 Once you have successfully installed JULES and run the 'Loobos' example successfully, return to the repository root directory with `cd ..`.
 
@@ -37,6 +37,12 @@ Run the following commands _in the repository root_ to set up Python 3.12 on you
 ```sh
 # Install pyenv
 curl -fsSL https://pyenv.run | bash
+
+# Add pyenv to your $PATH
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
+. ~/.bashrc
 
 # Install Python 3.12 using pyenv
 pyenv install 3.12
