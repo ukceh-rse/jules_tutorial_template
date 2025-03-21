@@ -1,0 +1,10 @@
+# Plots
+*.jpeg
+*.png
+
+# Python virtual environment
+.venv/
+
+# Jupyter stuff
+*.ipynb
+*.ipynb_checkpoints/
