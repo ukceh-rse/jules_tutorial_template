@@ -1,0 +1,3 @@
+[submodule "portable-jules"]
+	path = portable-jules
+	url = https://github.com/jmarshrossney/portable-jules
