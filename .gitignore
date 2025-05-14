@@ -13,3 +13,6 @@
 
 # Outputs of JULES experiments
 **/outputs/
+
+# Testing aliases for jules command
+.alias
