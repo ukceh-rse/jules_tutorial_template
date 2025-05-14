@@ -22,6 +22,23 @@ import matplotlib.pyplot as plt
 import xarray as xr
 ```
 
+## Construct paths
+
+Construct some `pathlib.Path` objects to make path building simpler and more robust.
+
+```python
+# This should say /path/to/jules_tutorial_template
+! git rev-parse --show-toplevel
+```
+
+```python
+(git_root,) = ! git rev-parse --show-toplevel
+git_root = Path(git_root)
+devbox_json = git_root / "portable-jules" / "devbox.json"
+
+assert devbox_json.exists()
+```
+
 ```python
 # This should say /path/to/jules_tutorial_template/experiment !
 ! pwd
@@ -42,7 +59,7 @@ assert jules_dir.exists()
 ## Run JULES
 
 ```python
-! devbox run -c ../portable-jules/devbox.json jules -d {jules_dir} {namelists_dir}
+! devbox run -c {devbox_json} jules -d {jules_dir} {namelists_dir}
 ```
 
 ```python
@@ -60,15 +77,15 @@ assert jules_dir.exists()
 ## Inspect the output data
 
 ```python
-dataset = xr.open_dataset(outputs_dir / "loobos.test.nc")
+ds = xr.open_dataset(outputs_dir / "loobos.test.nc")
 
-dataset
+ds
 ```
 
 ### Inspect tstar
 
 ```python
-tstar = dataset.tstar.squeeze()
+tstar = ds.tstar.squeeze()
 
 tstar
 ```
